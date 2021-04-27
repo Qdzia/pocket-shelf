@@ -1,14 +1,12 @@
 import React from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
 
-export default function Loading({ navigation }) {
+export default function Title({ route }) {
+    const { title } = route.params;
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Loading Screen</Text>
-      <Button
-        title="Go to Inside"
-        onPress={() => navigation.navigate("Core")}
-      />
+      <Text>to jest : {title}</Text>
+
     </View>
   );
 }
