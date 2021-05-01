@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import ExplorePanel from '../components/organisms/ExplorePanel'
 
 export default function Explore({ openTitle }) {
   return (
     <View style={styles.container}>
-      <Text>Explore Screen</Text>
+      <ExplorePanel/>
     </View>
   );
 }
