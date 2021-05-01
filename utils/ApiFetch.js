@@ -1,20 +1,20 @@
 import {API_KEY} from './ApiKey'
 
-export function ApiFetch() {
+export function ApiFetch(url) {
 
-    return fetch("https://imdb8.p.rapidapi.com/title/find?q=game%20of%20thr", {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": API_KEY,
-        "x-rapidapi-host": "imdb8.p.rapidapi.com"
-      }
+  return fetch(url, {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-key": API_KEY,
+      "x-rapidapi-host": "imdb8.p.rapidapi.com"
+    }
+  })
+  .then((response) => response.json())
+    .then((json) => {
+      return(json);
     })
-    .then((response) => response.json())
-      .then((json) => {
-        return(json);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    .catch((error) => {
+      console.error(error);
+    });
   
-  };
+  };//"https://imdb8.p.rapidapi.com/title/find?q=game%20of%20thr"

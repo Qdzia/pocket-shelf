@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import BottomBar from "../components/atoms/BottomBar";
-import Explore from "./Explore";
 import Home from "./Home";
 import MyList from "./MyList";
+import ExplorePanel from '../components/organisms/ExplorePanel'
 
 export default function Core({ navigation }) {
 
@@ -20,7 +20,7 @@ export default function Core({ navigation }) {
       case "mylist":
         return <MyList openTitle={openTitle} />;
       case "explore":
-        return <Explore openTitle={openTitle} />;
+        return <ExplorePanel />;
       default:
         return "home";
     }
