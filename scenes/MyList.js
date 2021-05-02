@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
-export default function MyList({ openTitle }) {
+export default function MyList() {
   return (
     <View style={styles.container}>
       <Text>MyList Screen</Text>

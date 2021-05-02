@@ -7,7 +7,7 @@ export default function Loading({ navigation }) {
       <Text>Loading Screen</Text>
       <Button
         title="Go to Inside"
-        onPress={() => navigation.navigate("Core")}
+        onPress={() => navigation.navigate("Hub")}
       />
     </View>
   );

@@ -5,7 +5,7 @@ import ExplorePanel from '../components/organisms/ExplorePanel'
 export default function Explore({ openTitle }) {
   return (
     <View style={styles.container}>
-      <ExplorePanel/>
+      <ExplorePanel />
     </View>
   );
 }
