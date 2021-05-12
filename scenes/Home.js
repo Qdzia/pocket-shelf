@@ -1,11 +1,13 @@
 import React from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
+import * as firebase from 'firebase';
 
 export default function Home({ openTitle }) {
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
-      <Button title="CLick me" onPress={() => openTitle("Harry")} />
+      <Text>Hello {firebase.auth().currentUser.email}</Text>
+      <Button title="Click me" onPress={() => openTitle("Harry")} />
     </View>
   );
 }

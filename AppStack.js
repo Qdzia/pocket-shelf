@@ -8,6 +8,8 @@ import Home from "./scenes/Home";
 import MyList from "./scenes/MyList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Foundation } from "@expo/vector-icons";
+import AuthLogin from './scenes/AuthLogin'
+import AuthRegister from './scenes/AuthRegister'
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -49,6 +51,16 @@ function Hub() {
 export default function App() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="AuthLogin"
+        component={AuthLogin}
+        options={{ headerTitle: (props) => <Header /> }}
+      />
+      <Stack.Screen
+        name="AuthRegister"
+        component={AuthRegister}
+        options={{ headerTitle: (props) => <Header /> }}
+      />
       <Stack.Screen
         name="Loading"
         component={Loading}
