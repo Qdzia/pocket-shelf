@@ -52,6 +52,14 @@ export default function App() {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="Hub"
+        component={Hub}
+        options={{
+          headerTitle: (props) => <Header />,
+          headerLeft: false,
+        }}
+      />
+      <Stack.Screen
         name="AuthLogin"
         component={AuthLogin}
         options={{ headerTitle: (props) => <Header /> }}
@@ -65,14 +73,6 @@ export default function App() {
         name="Loading"
         component={Loading}
         options={{ headerTitle: (props) => <Header /> }}
-      />
-      <Stack.Screen
-        name="Hub"
-        component={Hub}
-        options={{
-          headerTitle: (props) => <Header />,
-          headerLeft: false,
-        }}
       />
       <Stack.Screen
         name="Title"

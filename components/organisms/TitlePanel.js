@@ -1,28 +1,28 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Text, View, ActivityIndicator, StyleSheet,TextInput } from "react-native";
 import { ApiFetch } from "../../utils/ApiFetch";
-import ExploreList from '../molecules/ExploreList'
+import TitleDesc from '../molecules/TitleDesc'
+
 
 
 export default TitlePanel = ({titleId}) => {
   const [loading, setLoading] = useState(true);
-  const [text, onChangeText] = useState("");
   const [data, setData] = useState(undefined);
 
-  // const search = () =>{
-  //   var url = `https://imdb8.p.rapidapi.com/title/find?q=${text}`
-  //   ApiFetch(url).then((json) => {
-  //     setData(json);
-  //     setLoading(false);
-  //   });
-  // }
-  //{loading ? <ActivityIndicator size="large" color="#0000ff" /> : <ExploreList data={data}/> } 
+  const search = () =>{
+    var url = `https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${titleId}&currentCountry=US`
+    ApiFetch(url).then((json) => {
+      setData(json);
+      setLoading(false);
+    });
+  }
+
+  useEffect(() => { search() }, [])
 
   return (
     <View style={styles.container}>
 
-      <Text>Otwiram</Text>
-      <Text>{titleId}</Text>
+    { loading ? <ActivityIndicator size="large" color="#0000ff" /> : <TitleDesc data={data}/> }   
        
     </View>
   );
