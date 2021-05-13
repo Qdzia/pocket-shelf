@@ -28,7 +28,6 @@ export default TitlePanel = ({ titleId }) => {
     getData();
   }, []);
 
-  console.log(data);
   return (
     <View style={styles.container}>
       <Text>My List Here</Text>

@@ -34,7 +34,8 @@ export default ExplorePanel = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
+    height: '100%',
+    paddingBottom: '15%'
   },
   text: {
     marginHorizontal: 10,
@@ -43,7 +44,6 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: "90%",
     margin: 12,
     borderWidth: 1,
     borderRadius: 20,
