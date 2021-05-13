@@ -12,7 +12,13 @@ export default function AuthRegister({ navigation }) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((u) => {
+        var user = u.user;
+        var userDoc = firebase.firestore().collection("users").doc(user.uid);
+        userDoc.collection("titles").doc("init").set({id: 0})
+          .catch((error) => {
+            console.log(error);
+          });
         navigation.navigate("Hub");
       })
       .catch((error) => {

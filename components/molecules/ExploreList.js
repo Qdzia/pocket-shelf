@@ -9,41 +9,48 @@ import {
   Button,
   View,
 } from "react-native";
-import ItemBase from '../atoms/ItemBase'
-
-
+import ItemBase from "../atoms/ItemBase";
 
 export default ExploreList = ({ data }) => {
-
   const renderItem = ({ item }) => {
+    var url =
+      item.image !== undefined
+        ? item.image.url
+        : "https://m.media-amazon.com/images/M/MV5BMjE5NTk5NDg3OV5BMl5BanBnXkFtZTgwNDExNzg2MDE@._V1_.jpg";
+    var tab = item.id.split("/");
+    var id = tab[2];
+    var isTitle = tab[1] === "title" ? true : false;
 
-    var url = item.image !== undefined ? item.image.url : 'https://m.media-amazon.com/images/M/MV5BMjE5NTk5NDg3OV5BMl5BanBnXkFtZTgwNDExNzg2MDE@._V1_.jpg';
+    console.log(id);
     return (
-        <ItemBase
-        title={item.title}
-        year={item.year}
-        type={item.titleType}
-        url={url}
-      />
+      <>
+        {isTitle ? (
+          <ItemBase
+            id={id}
+            title={item.title}
+            year={item.year}
+            type={item.titleType}
+            url={url}
+          />) : ( <></>
+        )}
+      </>
     );
   };
 
   return (
-    <View >
+    <View>
       <FlatList
-      style={styles.container}
+        style={styles.container}
         data={data.results}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-      
     </View>
   );
 };
 //
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   item: {
     padding: 20,
     marginVertical: 8,
@@ -52,7 +59,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
-  flatList:{
-
-  }
+  flatList: {},
 });

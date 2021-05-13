@@ -51,6 +51,11 @@ function Hub() {
 export default function App() {
   return (
     <Stack.Navigator>
+           <Stack.Screen
+        name="AuthLogin"
+        component={AuthLogin}
+        options={{ headerTitle: (props) => <Header /> }}
+      />
       <Stack.Screen
         name="Hub"
         component={Hub}
@@ -60,15 +65,13 @@ export default function App() {
         }}
       />
       <Stack.Screen
-        name="AuthLogin"
-        component={AuthLogin}
-        options={{ headerTitle: (props) => <Header /> }}
-      />
-      <Stack.Screen
         name="AuthRegister"
         component={AuthRegister}
         options={{ headerTitle: (props) => <Header /> }}
       />
+      
+ 
+      
       <Stack.Screen
         name="Loading"
         component={Loading}
