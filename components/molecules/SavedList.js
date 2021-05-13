@@ -11,30 +11,18 @@ import {
 } from "react-native";
 import ItemBase from "../atoms/ItemBase";
 
-export default ExploreList = ({ data }) => {
-  const renderItem = ({ item }) => {
-    var url =
-      item.image !== undefined
-        ? item.image.url
-        : "https://m.media-amazon.com/images/M/MV5BMjE5NTk5NDg3OV5BMl5BanBnXkFtZTgwNDExNzg2MDE@._V1_.jpg";
-    var tab = item.id.split("/");
-    var id = tab[2];
-    var isTitle = tab[1] === "title" ? true : false;
+export default SavedList = ({ data }) => {
 
-    console.log(id);
+  const renderItem = ({ item }) => {
+    
     return (
-      <>
-        {isTitle ? (
           <ItemBase
-            id={id}
+            id={item.id}
             title={item.title}
             year={item.year}
-            type={item.titleType}
-            url={url}
-            modeSeen={false}
-          />) : ( <></>
-        )}
-      </>
+            type={item.type}
+            url={item.url}
+            modeSeen={true}/>
     );
   };
 
@@ -42,14 +30,14 @@ export default ExploreList = ({ data }) => {
     <View>
       <FlatList
         style={styles.container}
-        data={data.results}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
     </View>
   );
 };
-//
+
 const styles = StyleSheet.create({
   container: {},
   item: {

@@ -9,8 +9,18 @@ import {
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import * as firebase from "firebase";
+import AddButton from "./AddButton";
+import SeenButton from "./SeenButton";
 
-export default ItemBase = ({ id, title, year, type, url, onPress }) => {
+export default ItemBase = ({
+  id,
+  title,
+  year,
+  type,
+  url,
+  onPress,
+  modeSeen,
+}) => {
   const addToList = () => {
     var user = firebase.auth().currentUser;
     firebase
@@ -40,14 +50,9 @@ export default ItemBase = ({ id, title, year, type, url, onPress }) => {
           <Text>{type}</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.actionPanel}>
-        <Entypo
-          style={styles.icon}
-          name="add-to-list"
-          size={24}
-          color="black"
-        />
-      </TouchableOpacity>
+      <View style={styles.actionPanel}>
+        {modeSeen ? <SeenButton /> : <AddButton />}
+      </View>
     </View>
   );
 };
@@ -79,9 +84,5 @@ const styles = StyleSheet.create({
   title: {
     flexShrink: 1,
     fontSize: 20,
-  },
-  icon: {
-    alignSelf: "center",
-    width: "100%",
   },
 });

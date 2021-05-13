@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TextInput,
 } from "react-native";
-import TitleDesc from "../molecules/TitleDesc";
+import SavedList from "../molecules/SavedList";
 import * as firebase from "firebase";
 
 export default TitlePanel = ({ titleId }) => {
@@ -21,21 +21,19 @@ export default TitlePanel = ({ titleId }) => {
       .doc(user.uid)
       .collection("titles")
       .get()
-      .then((docRef) => setData(docRef.docs.map((doc) => doc.data())));
+      .then((docRef) => setData(docRef.docs.map((doc) => doc.data())))
+      .then(setLoading(false));
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  useEffect(() => { getData(); }, []);
 
   return (
     <View style={styles.container}>
-      <Text>My List Here</Text>
-      {/* {loading ? (
+      {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <TitleDesc data={data} />
-      )} */}
+        <SavedList data={data} />
+      )}
     </View>
   );
 };
