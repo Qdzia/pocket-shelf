@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import MyListPanel from '../components/organisms/MyListPanel'
 
 export default function MyList() {
   return (
     <View style={styles.container}>
-      <Text>MyList Screen</Text>
+      <MyListPanel/>
     </View>
   );
 }
