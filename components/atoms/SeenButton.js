@@ -13,8 +13,8 @@ import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as firebase from "firebase";
 
-export default SeenButton = ({ data }) => {
-  const [isCheck, setIsCheck] = useState(data.seen);
+export default SeenButton = ({ id, seen }) => {
+  const [isSeen, setIsSeen] = useState(seen);
 
   const seenBnt = () => {
     var user = firebase.auth().currentUser;
@@ -24,14 +24,14 @@ export default SeenButton = ({ data }) => {
       .collection("users")
       .doc(user.uid)
       .collection("titles")
-      .doc(data.id)
-      .update({ seen: !isCheck })
-      .then(() => setIsCheck(!isCheck));
+      .doc(id)
+      .update({ seen: !isSeen })
+      .then(() => setIsSeen(!isSeen));
   };
 
   return (
     <TouchableOpacity style={styles.container} onPress={seenBnt}>
-      {isCheck ? (
+      {isSeen ? (
         <MaterialCommunityIcons
           style={styles.icon}
           name="checkbox-blank-circle"

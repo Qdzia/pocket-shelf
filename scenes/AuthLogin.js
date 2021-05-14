@@ -11,7 +11,7 @@ export default function AuthLogin({ navigation }) {
   const login = () => {
     firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword("Franek@wp.pl", "Franek111111")// Change here auto login
       .then(() => {
         navigation.navigate("Hub");
       })

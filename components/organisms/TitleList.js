@@ -9,23 +9,12 @@ import {
   Button,
   View,
 } from "react-native";
-import ItemBase from "../atoms/ItemBase";
+import TitleBox from "../molecules/TitleBox";
 
-export default SavedList = ({ data, onPress }) => {
+export default TitleList = ({ data, mode, toTitle }) => {
 
   const renderItem = ({ item }) => {
-    
-    return (
-          <ItemBase
-            id={item.id}
-            title={item.title}
-            year={item.year}
-            type={item.type}
-            url={item.url}
-            seen={item.seen}
-            onPress={onPress}
-            mode={true}/>
-    );
+    return ( <TitleBox data={item} mode={mode} toTitle={toTitle}/>);
   };
 
   return (

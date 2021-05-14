@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, ActivityIndicator, StyleSheet,TextInput } from "react-native";
 import { ApiFetch } from "../../utils/ApiFetch";
-import ExploreList from '../molecules/ExploreList'
 
 
 export default ExplorePanel = ({onPress}) => {
@@ -26,7 +25,7 @@ export default ExplorePanel = ({onPress}) => {
         placeholder="useless placeholder"
         onSubmitEditing={search}
       />
-       {loading ? <ActivityIndicator size="large" color="#0000ff" /> : <ExploreList data={data} onPress={onPress}/> } 
+       {loading ? <ActivityIndicator size="large" color="#0000ff" /> : null } 
        
     </View>
   );
