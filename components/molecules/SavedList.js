@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import ItemBase from "../atoms/ItemBase";
 
-export default SavedList = ({ data }) => {
+export default SavedList = ({ data, onPress }) => {
 
   const renderItem = ({ item }) => {
     
@@ -22,7 +22,9 @@ export default SavedList = ({ data }) => {
             year={item.year}
             type={item.type}
             url={item.url}
-            modeSeen={true}/>
+            seen={item.seen}
+            onPress={onPress}
+            mode={true}/>
     );
   };
 

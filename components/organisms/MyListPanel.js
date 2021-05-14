@@ -9,7 +9,7 @@ import {
 import SavedList from "../molecules/SavedList";
 import * as firebase from "firebase";
 
-export default TitlePanel = ({ titleId }) => {
+export default TitlePanel = ({ onPress }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
 
@@ -32,7 +32,7 @@ export default TitlePanel = ({ titleId }) => {
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <SavedList data={data} />
+        <SavedList data={data} onPress={onPress}/>
       )}
     </View>
   );

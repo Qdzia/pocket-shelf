@@ -18,15 +18,6 @@ function Hub() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Foundation name="home" size={24} color="black" />
-          ),
-        }}
-      />
-      <Tab.Screen
         name="Explore"
         component={Explore}
         options={{

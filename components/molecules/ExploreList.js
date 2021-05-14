@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import ItemBase from "../atoms/ItemBase";
 
-export default ExploreList = ({ data }) => {
+export default ExploreList = ({ data, onPress }) => {
   const renderItem = ({ item }) => {
     var url =
       item.image !== undefined
@@ -21,7 +21,6 @@ export default ExploreList = ({ data }) => {
     var id = tab[2];
     var isTitle = tab[1] === "title" ? true : false;
 
-    console.log(id);
     return (
       <>
         {isTitle ? (
@@ -31,7 +30,8 @@ export default ExploreList = ({ data }) => {
             year={item.year}
             type={item.titleType}
             url={url}
-            modeSeen={false}
+            mode={false}
+            onPress={onPress}
           />) : ( <></>
         )}
       </>

@@ -12,37 +12,12 @@ import * as firebase from "firebase";
 import AddButton from "./AddButton";
 import SeenButton from "./SeenButton";
 
-export default ItemBase = ({
-  id,
-  title,
-  year,
-  type,
-  url,
-  onPress,
-  modeSeen,
-}) => {
-  const addToList = () => {
-    var user = firebase.auth().currentUser;
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(user.uid)
-      .collection("titles")
-      .doc(id)
-      .set({
-        id: id,
-        title: title,
-        year: year,
-        type: type,
-        url: url,
-        seen: false,
-      });
-    console.log(id);
-  };
+export default ItemBase = ({ id, title, year, type, url, onPress, mode, seen }) => {
+  const data = { id: id, title: title, year: year, type: type, url: url, seen: seen};
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.touch} onPress={onPress}>
+      <TouchableOpacity style={styles.touch} onPress={() => onPress(id)}>
         <Image style={styles.img} source={{ uri: url }} />
         <View style={styles.info}>
           <Text style={styles.title}>{title}</Text>
@@ -51,7 +26,7 @@ export default ItemBase = ({
         </View>
       </TouchableOpacity>
       <View style={styles.actionPanel}>
-        {modeSeen ? <SeenButton /> : <AddButton />}
+        {mode ? <SeenButton data={data}/> : <AddButton data={data}/>}
       </View>
     </View>
   );

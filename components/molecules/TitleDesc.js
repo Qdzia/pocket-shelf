@@ -7,10 +7,12 @@ import {
   TextInput,
   Image,
 } from "react-native";
+import TitleActions from '../atoms/TitleActions'
 
 export default TitleDesc = ({ data }) => {
   const [loading, setLoading] = useState(true);
 
+  const id = data.id.split('/')[2]; 
   return (
     <View style={styles.container}>
       <Image
@@ -20,12 +22,11 @@ export default TitleDesc = ({ data }) => {
         }}
       />
       <Text>{data.title.title}</Text>
-      <Text>{data.title.seriesStartYear} - {data.title.seriesEndYear}</Text>
-      <Text>Episodes: {data.title.numberOfEpisodes}</Text>
+      <Text>{data.title.year}</Text>
       <Text>Type: {data.title.titleType}</Text>
 
       <Text>Rating: {data.ratings.rating} ({data.ratings.ratingCount} votes)</Text>
-
+        <TitleActions id={id}/>
       <Text>Summary</Text>
       <Text>{data.plotSummary.text}</Text>
     </View>

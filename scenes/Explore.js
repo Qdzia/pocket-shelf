@@ -2,10 +2,15 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import ExplorePanel from '../components/organisms/ExplorePanel'
 
-export default function Explore({ openTitle }) {
+export default function Explore({ navigation }) {
+
+  const toTitle = (id) => {
+    navigation.navigate("Title", { titleId: id })
+  } 
+
   return (
     <View style={styles.container}>
-      <ExplorePanel />
+      <ExplorePanel onPress={toTitle}/>
     </View>
   );
 }

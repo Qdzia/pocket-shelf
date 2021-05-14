@@ -4,7 +4,7 @@ import { ApiFetch } from "../../utils/ApiFetch";
 import ExploreList from '../molecules/ExploreList'
 
 
-export default ExplorePanel = () => {
+export default ExplorePanel = ({onPress}) => {
   const [loading, setLoading] = useState(true);
   const [text, onChangeText] = useState("");
   const [data, setData] = useState(undefined);
@@ -26,7 +26,7 @@ export default ExplorePanel = () => {
         placeholder="useless placeholder"
         onSubmitEditing={search}
       />
-       {loading ? <ActivityIndicator size="large" color="#0000ff" /> : <ExploreList data={data}/> } 
+       {loading ? <ActivityIndicator size="large" color="#0000ff" /> : <ExploreList data={data} onPress={onPress}/> } 
        
     </View>
   );
