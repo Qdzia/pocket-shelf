@@ -4,31 +4,29 @@ import {
   View,
   ActivityIndicator,
   StyleSheet,
-  TextInput,
+  Dimensions,
   Image,
 } from "react-native";
 import TitleActions from '../atoms/TitleActions'
 
 export default TitleDesc = ({ data }) => {
-  const [loading, setLoading] = useState(true);
 
-  const id = data.id.split('/')[2]; 
   return (
     <View style={styles.container}>
       <Image
         style={styles.img}
         source={{
-          uri: data.title.image.url,
+          uri: data.url,
         }}
       />
-      <Text>{data.title.title}</Text>
-      <Text>{data.title.year}</Text>
-      <Text>Type: {data.title.titleType}</Text>
+      <Text>{data.title}</Text>
+      <Text>{data.year}</Text>
+      <Text>Type: {data.type}</Text>
 
-      <Text>Rating: {data.ratings.rating} ({data.ratings.ratingCount} votes)</Text>
-        <TitleActions id={id}/>
+      <Text>Rating: {data.rating} ({data.votes} votes)</Text>
+      <TitleActions data={data}/>
       <Text>Summary</Text>
-      <Text>{data.plotSummary.text}</Text>
+      <Text>{data.plot}</Text>
     </View>
   );
 };
@@ -36,7 +34,6 @@ export default TitleDesc = ({ data }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    paddingHorizontal: 25,
   },
   text: {
     marginHorizontal: 10,
@@ -52,7 +49,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   img: {
-    width: 1454 / 8,
-    height: 2048 / 8,
+    marginVertical: 25,
+    width:  Dimensions.get("window").width * 0.7,
+    height: Dimensions.get("window").width * 0.7 * 1.43,
   },
 });

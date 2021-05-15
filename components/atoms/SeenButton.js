@@ -52,11 +52,12 @@ export default SeenButton = ({ id, seen }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    flexDirection: "row",
+    //width: "100%",
+    //flexDirection: "row",
+    
   },
   icon: {
-    alignSelf: "center",
-    width: "100%",
+    //alignSelf: "center",
+    //width: "100%",
   },
 });

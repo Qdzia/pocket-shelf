@@ -35,9 +35,12 @@ function Hub() {
           ),
         }}
       />
+      
+      
     </Tab.Navigator>
   );
 }
+
 
 export default function App() {
   return (
@@ -53,7 +56,8 @@ export default function App() {
         options={{
           headerTitle: (props) => <Header />,
           headerLeft: false,
-        }}
+        }} 
+        
       />
       <Stack.Screen
         name="AuthRegister"
