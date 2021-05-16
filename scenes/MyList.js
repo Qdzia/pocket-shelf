@@ -20,8 +20,13 @@ export default function MyList({navigation}) {
       .then(setLoading(false));
   };
 
-  useEffect(() => { getData(); }, []);
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+      setLoading(true);
+      getData();
+    });
 
+  }, [navigation]);
 
   const toTitle = (id) => {
     navigation.navigate("Title", { titleId: id })

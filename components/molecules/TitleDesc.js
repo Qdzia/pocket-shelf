@@ -19,18 +19,22 @@ export default TitleDesc = ({ data }) => {
           uri: data.url,
         }}
       />
-      <Text>{data.title}</Text>
-      <Text>{data.year}</Text>
-      <Text>Type: {data.type}</Text>
-
+      <Text style={styles.title}>{data.title}</Text>
       <Text>Rating: {data.rating} ({data.votes} votes)</Text>
+      <Text>Type: {data.type}</Text>
+      <Text>{data.year}</Text>
+      
+
       <TitleActions data={data}/>
-      <Text>Summary</Text>
-      <Text>{data.plot}</Text>
+      <Text style={styles.summaryTitle}>Summary</Text>
+      <View style={styles.summary}>
+      <Text style={styles.summaryText}>{data.plot}</Text>
+      </View>
+      
     </View>
   );
 };
-
+//style={styles.}
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -53,4 +57,20 @@ const styles = StyleSheet.create({
     width:  Dimensions.get("window").width * 0.7,
     height: Dimensions.get("window").width * 0.7 * 1.43,
   },
+  title: {
+    fontSize: 28,
+    marginBottom: 5
+  },
+  summaryTitle: {
+    fontSize: 22,
+    marginVertical: 10,
+  },
+  summary: {
+    paddingHorizontal: 20,
+    marginBottom: 80,
+    
+  },
+  summaryText: {
+    textAlign: 'justify',
+  }
 });

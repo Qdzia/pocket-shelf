@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderBottomWidth: 2,
     padding: 8,
-    marginVertical: 15
+    marginVertical: 20
   },
   flexRow: {
     width: "100%",
