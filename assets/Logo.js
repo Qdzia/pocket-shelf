@@ -1,9 +1,9 @@
 import * as React from "react"
 import Svg, { Path, G } from "react-native-svg"
 
-export default function Logo(props) {
+export default function Logo({size}) {
   return (
-    <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={28} height={28} >
+    <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={size} height={size} >
       <Path
         fill="#FFE100"
         d="M477.867 196.267L281.6 317.44c-17.067 9.387-37.547 9.387-54.613 0L8.533 196.267V40.107c0-17.067 14.507-31.573 31.573-31.573h406.187c17.067 0 31.573 14.507 31.573 31.573v156.16z"

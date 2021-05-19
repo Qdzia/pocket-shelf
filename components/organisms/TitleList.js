@@ -1,12 +1,7 @@
 import React from "react";
 import {
   FlatList,
-  SafeAreaView,
-  StatusBar,
   StyleSheet,
-  Text,
-  TouchableOpacity,
-  Button,
   View,
 } from "react-native";
 import TitleBox from "../molecules/TitleBox";

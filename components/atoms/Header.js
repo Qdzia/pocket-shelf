@@ -1,12 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 import { Text, View, StyleSheet} from "react-native";
 import Logo from '../../assets/Logo'
+import { ACCENT } from "../../styles/Colors";
 
 export default Header = () => {
 
   return (
     <View style={styles.container}>
-      <Logo/>
+      <Logo size={28}/>
     
     <Text style={styles.text}>Pocket Shelf</Text>
         
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
   text: {
       marginHorizontal: 10,
       fontWeight: 'bold',
-      fontSize: 18
+      fontSize: 18,
+      color: ACCENT
   }
 });

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { Text, View, Button, StyleSheet, TextInput } from "react-native";
+import {
+  Text,
+  View,
+  Button,
+  StyleSheet,
+  TextInput,
+  Dimensions,
+} from "react-native";
 import * as firebase from "firebase";
-import PasswordInput from "../components/atoms/PasswordInput";
+import Logo from "../assets/Logo";
+import {SECONDARY,ACCENT, PRIMARY, TEXT} from '../styles/Colors'
 
 export default function AuthLogin({ navigation }) {
   const [email, setEmail] = useState("");
@@ -11,7 +19,7 @@ export default function AuthLogin({ navigation }) {
   const login = () => {
     firebase
       .auth()
-      .signInWithEmailAndPassword("Franek@wp.pl", "Franek111111")// Change here auto login
+      .signInWithEmailAndPassword("Franek@wp.pl", "Franek111111") // Change here auto login
       .then(() => {
         navigation.navigate("Hub");
       })
@@ -22,20 +30,45 @@ export default function AuthLogin({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        onChangeText={setEmail}
-        value={email}
-        placeholder="Email..."
-      />
-      <PasswordInput onChangeText={setPassword} value={password} />
-      <Text style={styles.error}>{errorMassage}</Text>
-      <Button style={styles.button} title="Sign In" onPress={login} />
-      <Button
-        style={styles.button}
-        title="Sign Up with Email"
-        onPress={() => navigation.navigate("AuthRegister")}
-      />
+      <View>
+        <View style={styles.logo}>
+        <Logo size={150} />
+        </View>
+        
+        <Text style={styles.subtitle}>Keep your movies on hand</Text>
+      </View>
+
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={setEmail}
+          value={email}
+          placeholder="Email..."
+          placeholderTextColor="#C3C4C7"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={setPassword}
+          value={password}
+          placeholder="Password..."
+        placeholderTextColor="#C3C4C7"
+          secureTextEntry={true}
+        />
+        <Text style={styles.error}>{errorMassage}</Text>
+      </View>
+      <View>
+      <View style={styles.btn}>
+        <Button title="Sign In" onPress={login} color={PRIMARY} />
+      </View>
+      <View style={styles.btn}>
+        <Button
+          title="Sign Up with Email"
+          onPress={() => navigation.navigate("AuthRegister")}
+          color={PRIMARY}
+        />
+      </View>
+      </View>
+      
     </View>
   );
 }
@@ -43,22 +76,39 @@ export default function AuthLogin({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: SECONDARY,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     padding: 50,
   },
   input: {
     height: 40,
-    width: "100%",
-    borderWidth: 1,
+    width: Dimensions.get("window").width * 0.8,
+    borderWidth: 2,
     borderRadius: 20,
     paddingLeft: 20,
+    marginVertical: 5,
+    fontSize: 16,
+    borderColor: PRIMARY,
+    color: TEXT
   },
   error: {
     color: "red",
   },
-  button: {
-    padding: 15,
+  btn: {
+    marginBottom: 15,
+    width: Dimensions.get("window").width * 0.8,
   },
+  logo:{
+    alignSelf: 'center'
+  },
+  subtitle: {
+    fontSize: 20,
+    color: ACCENT,
+    marginTop: 15,
+    fontWeight: 'bold'
+  },
+  btn1: {
+    color: "blue"
+  }
 });

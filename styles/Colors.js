@@ -1,3 +1,4 @@
-export const PRIMARY = '#3adb76';
-export const SECONDARY = '#3adb76';
-export const ACCENT = '#3adb76';
+export const PRIMARY = '#173F5F';
+export const SECONDARY = '#20639B';
+export const ACCENT = '#F6D55C';
+export const TEXT = "#DCDCDE";

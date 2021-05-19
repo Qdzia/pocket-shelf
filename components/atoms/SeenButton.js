@@ -1,20 +1,15 @@
-import React, { useState } from "react";
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Button,
-  View,
-} from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import React, { useState, useEffect } from "react";
+import { TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as firebase from "firebase";
+import { TEXT } from "../../styles/Colors";
 
 export default SeenButton = ({ id, seen }) => {
   const [isSeen, setIsSeen] = useState(seen);
+
+  useEffect(() => {
+    setIsSeen(seen)
+  }, [seen])
 
   const seenBnt = () => {
     var user = firebase.auth().currentUser;
@@ -30,34 +25,24 @@ export default SeenButton = ({ id, seen }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={seenBnt}>
+    <TouchableOpacity
+      onPress={seenBnt}
+      activeOpacity={0.5}
+    >
       {isSeen ? (
         <MaterialCommunityIcons
-          style={styles.icon}
           name="checkbox-blank-circle"
           size={24}
-          color="black"
+          color={TEXT}
         />
       ) : (
         <MaterialCommunityIcons
-          style={styles.icon}
           name="checkbox-blank-circle-outline"
           size={24}
-          color="black"
+          color={TEXT}
         />
       )}
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    //width: "100%",
-    //flexDirection: "row",
-    
-  },
-  icon: {
-    //alignSelf: "center",
-    //width: "100%",
-  },
-});

@@ -68,31 +68,32 @@ export default TitlePanel = ({ titleId }) => {
   const [data, setData] = useState(undefined);
 
   const search = () => {
-    setData({
-          id: call.id.split("/")[2],
-          title: call.title.title,
-          year: call.title.year,
-          type: call.title.titleType,
-          rating: call.ratings.rating,
-          votes: call.ratings.ratingCount,
-          url: call.title.image.url,
-          plot: call.plotSummary.text,
-        });
-    setLoading(false);
-    // var url = `https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${titleId}&currentCountry=US`;
-    // ApiFetch(url).then((json) => {
-    //   setData({
-    //     id: json.id.split("/")[2],
-    //     title: json.title.title,
-    //     year: json.title.year,
-    //     type: json.title.titleType,
-    //     rating: json.ratings.rating,
-    //     votes: json.ratings.ratingCount,
-    //     url: json.title.image.url,
-    //     plot: json.plotSummary.text,
-    //   });
-    //   setLoading(false);
-    //});
+    // setData({
+    //       id: call.id.split("/")[2],
+    //       title: call.title.title,
+    //       year: call.title.year,
+    //       type: call.title.titleType,
+    //       rating: call.ratings.rating,
+    //       votes: call.ratings.ratingCount,
+    //       url: call.title.image.url,
+    //       plot: call.plotSummary.text,
+    //     });
+    // setLoading(false);
+
+    var url = `https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${titleId}&currentCountry=US`;
+    ApiFetch(url).then((json) => {
+      setData({
+        id: json.id.split("/")[2],
+        title: json.title.title,
+        year: json.title.year,
+        type: json.title.titleType,
+        rating: json.ratings.rating,
+        votes: json.ratings.ratingCount,
+        url: json.title.image.url,
+        plot: json.plotSummary.text,
+      });
+      setLoading(false);
+    });
   };
 
   useEffect(() => {

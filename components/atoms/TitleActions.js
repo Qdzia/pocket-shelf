@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Button,
-  View,
-} from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import { StyleSheet, View } from "react-native";
 import * as firebase from "firebase";
-import { add } from "react-native-reanimated";
 import AddButton from "./AddButton";
 import SeenButton from "./SeenButton";
-import { Dimensions } from 'react-native';
+import { Dimensions } from "react-native";
+import { TEXT } from "../../styles/Colors";
 
 export default TitleActions = ({ data }) => {
   const [inList, setInList] = useState(false);
@@ -49,16 +39,16 @@ export default TitleActions = ({ data }) => {
 
   const NewTitle = (
     <View style={styles.oneBtn}>
-      <AddButton data={data} inList={inList} update={update}/>
+      <AddButton data={data} inList={inList} update={update} />
     </View>
   );
   const ListTitle = (
     <View style={styles.flexRow}>
       <View style={styles.btn}>
-        <SeenButton id={data.id} seen={isSeen}/>
+        <SeenButton id={data.id} seen={isSeen} />
       </View>
       <View style={styles.btn}>
-        <AddButton data={data} inList={inList} update={update}/>
+        <AddButton data={data} inList={inList} update={update} />
       </View>
     </View>
   );
@@ -67,11 +57,12 @@ export default TitleActions = ({ data }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get('window').width,
+    width: Dimensions.get("window").width,
     borderTopWidth: 2,
     borderBottomWidth: 2,
+    borderColor: TEXT,
     padding: 8,
-    marginVertical: 20
+    marginVertical: 20,
   },
   flexRow: {
     width: "100%",
@@ -79,17 +70,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   btn: {
-    width: (Dimensions.get('window').width - 16) /2,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    width: (Dimensions.get("window").width - 16) / 2,
+    justifyContent: "center",
+    flexDirection: "row",
   },
   icon: {
     alignSelf: "center",
     width: "100%",
   },
   oneBtn: {
-    width: Dimensions.get('window').width - 16,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  }
+    width: Dimensions.get("window").width - 16,
+    justifyContent: "center",
+    flexDirection: "row",
+  },
 });

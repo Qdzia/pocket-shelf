@@ -8,19 +8,18 @@ import {
   Dimensions,
 } from "react-native";
 import SeenButton from "../atoms/SeenButton";
+import {TEXT} from '../../styles/Colors'
 
 export default TitleBox = ({ data, mode, toTitle }) => {
 
-
-
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.touch} onPress={() => toTitle(data.id)}>
+      <TouchableOpacity style={styles.touch} onPress={() => toTitle(data.id)} activeOpacity={1}>
         <Image style={styles.img} source={{ uri:  data.url}} />
         <View style={styles.info}>
           <Text style={styles.title}>{data.title}</Text>
-          <Text>{data.year}</Text>
-          <Text>{data.type}</Text>
+          <Text style={styles.text}>{data.year}</Text>
+          <Text style={styles.text}>{data.type}</Text>
         </View>
       </TouchableOpacity>
       <View style={styles.actionPanel}>
@@ -44,11 +43,12 @@ const styles = StyleSheet.create({
   },
   actionPanel: {
     width: "10%",
-    flexDirection: "row",
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   text: {
-    fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 15,
+    color: TEXT
   },
   img: {
     width: "30%",
@@ -57,5 +57,6 @@ const styles = StyleSheet.create({
   title: {
     flexShrink: 1,
     fontSize: 20,
+    color: TEXT
   },
 });

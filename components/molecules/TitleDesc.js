@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import TitleActions from '../atoms/TitleActions'
+import {TEXT} from '../../styles/Colors'
 
 export default TitleDesc = ({ data }) => {
 
@@ -20,9 +21,9 @@ export default TitleDesc = ({ data }) => {
         }}
       />
       <Text style={styles.title}>{data.title}</Text>
-      <Text>Rating: {data.rating} ({data.votes} votes)</Text>
-      <Text>Type: {data.type}</Text>
-      <Text>{data.year}</Text>
+      <Text style={styles.text}>Rating: {data.rating} ({data.votes} votes)</Text>
+      <Text style={styles.text}>Type: {data.type}</Text>
+      <Text style={styles.text}>{data.year}</Text>
       
 
       <TitleActions data={data}/>
@@ -34,23 +35,12 @@ export default TitleDesc = ({ data }) => {
     </View>
   );
 };
-//style={styles.}
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
   text: {
-    marginHorizontal: 10,
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-  input: {
-    height: 40,
-    width: "90%",
-    margin: 12,
-    borderWidth: 1,
-    borderRadius: 20,
-    paddingLeft: 20,
+    color: TEXT
   },
   img: {
     marginVertical: 25,
@@ -59,18 +49,20 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    marginBottom: 5
+    marginBottom: 5,
+    color: TEXT
   },
   summaryTitle: {
     fontSize: 22,
     marginVertical: 10,
+    color: TEXT
   },
   summary: {
     paddingHorizontal: 20,
     marginBottom: 80,
-    
   },
   summaryText: {
     textAlign: 'justify',
-  }
+    color: TEXT
+  },
 });

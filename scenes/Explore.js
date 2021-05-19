@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, ActivityIndicator,TextInput } from "react-native";
+import { Text,Dimensions, View, StyleSheet, ActivityIndicator,TextInput } from "react-native";
 import { ApiFetch } from "../utils/ApiFetch";
 import TitleList from "../components/organisms/TitleList";
+import {SECONDARY, TEXT, PRIMARY, ACCENT} from '../styles/Colors'
 
 export default function Explore({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
   const [text, onChangeText] = useState("");
+  const [firstLook, setFirstLook] = useState(true);
 
   const getData = () => {
+    
+    setFirstLook(false);
     var url = `https://imdb8.p.rapidapi.com/title/find?q=${text}`;
     ApiFetch(url).then((json) => {
       setData(
@@ -42,6 +46,12 @@ export default function Explore({ navigation }) {
     navigation.navigate("Title", { titleId: id });
   };
 
+  const titleList = loading ? (
+    <ActivityIndicator color={ACCENT} size="large" color="#0000ff" />
+  ) : (
+    <TitleList data={data} mode="explore" toTitle={toTitle} />
+  )
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -49,13 +59,13 @@ export default function Explore({ navigation }) {
         onChangeText={onChangeText}
         value={text}
         placeholder="I'm looking for..."
+        placeholderTextColor="#C3C4C7"
         onSubmitEditing={getData}
       />
-      {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
-      ) : (
-        <TitleList data={data} mode="explore" toTitle={toTitle} />
-      )}
+      <View style={{marginBottom: '15%'}}>
+      {firstLook ? <Text style={styles.subtitle}>* Find Your Favorite Titles *</Text>:titleList}
+
+      </View>
     </View>
   );
 }
@@ -63,16 +73,26 @@ export default function Explore({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: "15%",
     alignItems: "center",
     justifyContent: "flex-start",
+    backgroundColor: SECONDARY,
   },
   input: {
     height: 40,
-    margin: 12,
-    borderWidth: 1,
+    width: Dimensions.get("window").width * 0.9,
+    borderWidth: 2,
     borderRadius: 20,
     paddingLeft: 20,
-    width: '90%'
+    marginVertical: 5,
+    fontSize: 16,
+    borderColor: PRIMARY,
+    color: TEXT,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  subtitle: {
+    color: ACCENT,
+    fontSize: 20,
+    marginTop: 50,
   }
 });

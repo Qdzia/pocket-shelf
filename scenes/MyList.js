@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Text, View, StyleSheet,ActivityIndicator } from "react-native";
 import TitleList from "../components/organisms/TitleList";
 import * as firebase from "firebase";
+import {SECONDARY} from '../styles/Colors'
 
 export default function MyList({navigation}) {
 
@@ -46,8 +47,8 @@ export default function MyList({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: SECONDARY,
   }
 });
