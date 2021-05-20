@@ -11,6 +11,7 @@ import {
 import * as firebase from "firebase";
 import { PRIMARY, SECONDARY, TEXT, ACCENT } from "../styles/Colors";
 
+
 export default function AuthRegister({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +27,7 @@ export default function AuthRegister({ navigation }) {
         userDoc
           .collection("titles")
           .doc("init")
-          .set({ id: 0 })
+          .set({ id: "0" })
           .catch((error) => {
             console.log(error);
           });
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: SECONDARY,
     alignItems: "center",
-    padding: 50,
+    padding: 40,
   },
   input: {
     height: 40,
@@ -96,12 +97,12 @@ const styles = StyleSheet.create({
     color: "red",
   },
   title: {
-    fontSize: 70,
+    fontSize: 60,
     color: ACCENT,
     fontWeight: "bold",
   },
   form: {
-    marginTop: '20%',
+    marginTop: '10%',
     marginBottom: '20%'
   },
   btn: {

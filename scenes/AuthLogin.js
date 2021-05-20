@@ -19,7 +19,7 @@ export default function AuthLogin({ navigation }) {
   const login = () => {
     firebase
       .auth()
-      .signInWithEmailAndPassword("Franek@wp.pl", "Franek111111") // Change here auto login
+      .signInWithEmailAndPassword(email, password) // Change here auto login"Franek@wp.pl""Franek111111"
       .then(() => {
         navigation.navigate("Hub");
       })
@@ -29,16 +29,16 @@ export default function AuthLogin({ navigation }) {
       });
   };
   return (
-    <View style={styles.container}>
+      <View style={styles.container}>
       <View>
         <View style={styles.logo}>
-        <Logo size={150} />
+        <Logo size={100} />
         </View>
         
         <Text style={styles.subtitle}>Keep your movies on hand</Text>
       </View>
 
-      <View>
+      <View style={styles.form}>
         <TextInput
           style={styles.input}
           onChangeText={setEmail}
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: SECONDARY,
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "flex-start",
     padding: 50,
   },
   input: {
@@ -106,9 +106,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: ACCENT,
     marginTop: 15,
+    marginBottom: 15,
     fontWeight: 'bold'
   },
-  btn1: {
-    color: "blue"
-  }
+  form: {
+    marginVertical: '20%'
+  },
 });

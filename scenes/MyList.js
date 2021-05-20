@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from "react";
-import { Text, View, StyleSheet,ActivityIndicator } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import TitleList from "../components/organisms/TitleList";
 import * as firebase from "firebase";
-import {SECONDARY} from '../styles/Colors'
+import { SECONDARY, ACCENT } from '../styles/Colors'
 
-export default function MyList({navigation}) {
+export default function MyList({ navigation }) {
 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   const getData = () => {
     var user = firebase.auth().currentUser;
@@ -17,8 +18,13 @@ export default function MyList({navigation}) {
       .doc(user.uid)
       .collection("titles")
       .get()
-      .then((docRef) => setData(docRef.docs.map((doc) => doc.data())))
-      .then(setLoading(false));
+      .then((docRef) => {
+        let arr = docRef.docs.map((doc) => doc.data());
+        arr.shift();
+        setData(arr);
+        if (arr.length > 0) setIsEmpty(false)
+      })
+      .then(setLoading(false))
   };
 
   useEffect(() => {
@@ -31,15 +37,14 @@ export default function MyList({navigation}) {
 
   const toTitle = (id) => {
     navigation.navigate("Title", { titleId: id })
-  } 
-
+  }
+  console.log(data)
+  const listOfTitles = isEmpty ? <Text style={styles.subtitle}>Empty List</Text> : <TitleList data={data} mode='mylist' toTitle={toTitle} />
   return (
     <View style={styles.container}>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
-      ) : (
-        <TitleList data={data} mode='mylist' toTitle={toTitle}/>
-      )}
+      ) : listOfTitles}
     </View>
   );
 }
@@ -50,5 +55,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: SECONDARY,
+  },
+  subtitle: {
+    color: ACCENT,
+    fontSize: 20,
   }
 });
